@@ -39,6 +39,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </ul>
     <ul class="navbar-nav">
       <li class="nav-item">
+        <a class="nav-link" href="<?= base_url().'users/register'; ?>">Register</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="<?= base_url().'posts/create'; ?>">Create Post</a>
       </li>
       <li class="nav-item">
@@ -48,3 +51,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </div>
 </nav>
 <div class="container">
+  <!-- Flash message -->
+  <?php if($this->session->flashdata('user_registered')) : ?>
+  <div class="alert alert-success">
+    <?= $this->session->flashdata('user_registered') ?>
+  </div>
+  <?php endif; ?>
+  <?php if($this->session->flashdata('post_created')) : ?>
+  <div class="alert alert-success">
+    <?= $this->session->flashdata('post_created') ?>
+  </div>
+  <?php endif; ?>
+  <?php if($this->session->flashdata('post_deleted')) : ?>
+  <div class="alert alert-success">
+    <?= $this->session->flashdata('post_deleted') ?>
+  </div>
+  <?php endif; ?>
+  <?php if($this->session->flashdata('post_updated')) : ?>
+  <div class="alert alert-success">
+    <?= $this->session->flashdata('post_updated') ?>
+  </div>
+  <?php endif; ?>
+  <?php if($this->session->flashdata('new_comment')) : ?>
+  <div class="alert alert-success">
+    <?= $this->session->flashdata('new_comment') ?>
+  </div>
+  <?php endif; ?>
+  <?php if($this->session->flashdata('category_created')) : ?>
+  <div class="alert alert-success">
+    <?= $this->session->flashdata('category_created') ?>
+  </div>
+  <?php endif; ?>
