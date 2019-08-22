@@ -27,6 +27,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url().'posts'; ?>">Blog</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?= base_url().'categories'; ?>">Categories</a>
+      </li>
       <!-- <li class="nav-item">
         <a class="nav-link" href="#">Pricing</a>
       </li>
@@ -37,6 +40,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url().'posts/create'; ?>">Create Post</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?= base_url().'categories/create'; ?>">Create Category</a>
       </li>
     </ul>
   </div>
