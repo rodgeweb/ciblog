@@ -14,7 +14,10 @@
             </div>
         </div>
     </div>
-
-
 <?php endforeach; ?>
+</div>
+<div class="my-5 py-2">  
+    <div class="pagination">
+    <?= $this->pagination->create_links(); ?>
+    </div>      
 </div>

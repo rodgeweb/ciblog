@@ -116,3 +116,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <?php endif; ?>
 
+<?php if($this->session->flashdata('category_deleted')) : ?>
+<div class="alert alert-danger">
+  <?= $this->session->flashdata('category_deleted') ?>
+</div>
+<?php endif; ?>
+

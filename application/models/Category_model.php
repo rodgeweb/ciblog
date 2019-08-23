@@ -5,7 +5,8 @@ class Category_model extends CI_Model {
 
     public function create_category() {
         $data = array(
-            'name' => $this->input->post('name')
+            'name' => $this->input->post('name'),
+            'user_id' => $this->session->userdata('user_id')
         );
 
         $query = $this->db->insert('categories', $data);
@@ -14,7 +15,7 @@ class Category_model extends CI_Model {
     }
 
     public function get_categories() {
-        $this->db->order_by('name');
+        // $this->db->order_by('name');
         $query = $this->db->get('categories');
         return $query;
     }
@@ -22,6 +23,12 @@ class Category_model extends CI_Model {
     public function get_category($id) {
         $query = $this->db->get_where('categories', array('id' => $id));
         return $query->row();
+    }
+
+    public function delete_category($id) {
+        $this->db->where('id', $id);
+        $this->db->delete('categories');
+        return true;
     }
 
 }

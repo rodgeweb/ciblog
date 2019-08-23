@@ -1,4 +1,3 @@
-<?php //foreach($post->result() as $po) : ?>
 <div class="jumbotron">
   <h2 class="display-4"><?= $post->title; ?></h2>
 </div>
@@ -46,4 +45,3 @@
     <input type="submit" name="comment" class="btn btn-primary" />
   </div>
 </form>
-<?php //endforeach; ?>
