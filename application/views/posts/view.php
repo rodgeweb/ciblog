@@ -8,6 +8,7 @@
 <div class="text-muted">
     Created: <?= $post->created_at; ?>
 </div>
+<?php if($this->session->userdata('user_id') == $post->user_id) : ?>
 <div class="py-1 mt-5">
   <a href="<?= site_url() ?>/posts/edit/<?= $post->slug; ?>" class="btn btn-warning">Edit</a>
 </div>
@@ -16,6 +17,7 @@
     <input type="submit" value="Delete" class="btn btn-danger" />
   </form>
 </div>
+<?php endif; ?>
 <hr/>
 <?php foreach($comments->result() as $comment) : ?>
   <div class="my-3 py-1">

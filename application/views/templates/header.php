@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/bootstrap/bootstrap.min.css">
   <!-- <link rel="stylesheet" type="text/css" href="<?php //echo base_url() ?>assets/css/bootstrap.min.css"> -->
-  <script src="//cdn.ckeditor.com/4.12.1/full/ckeditor.js"></script>
+  <!-- <script src="//cdn.ckeditor.com/4.12.1/full/ckeditor.js"></script> -->
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -38,15 +38,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </li> -->
     </ul>
     <ul class="navbar-nav">
+      <?php if(!$this->session->userdata('logged_in')) : ?>
+      <li class="nav-item">
+        <a class="nav-link" href="<?= base_url().'users/login'; ?>">Log-In</a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url().'users/register'; ?>">Register</a>
       </li>
+      <?php endif; ?>
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url().'posts/create'; ?>">Create Post</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<?= base_url().'categories/create'; ?>">Create Category</a>
       </li>
+      <?php if($this->session->userdata('logged_in')) : ?>
+      <li class="nav-item">
+        <a class="nav-link" href="<?= base_url().'users/logout'; ?>">Log Out</a>
+      </li>
+      <?php endif; ?>
     </ul>
   </div>
 </nav>
@@ -57,28 +67,52 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <?= $this->session->flashdata('user_registered') ?>
   </div>
   <?php endif; ?>
+
   <?php if($this->session->flashdata('post_created')) : ?>
   <div class="alert alert-success">
     <?= $this->session->flashdata('post_created') ?>
   </div>
   <?php endif; ?>
+
   <?php if($this->session->flashdata('post_deleted')) : ?>
-  <div class="alert alert-success">
+  <div class="alert alert-warning">
     <?= $this->session->flashdata('post_deleted') ?>
   </div>
   <?php endif; ?>
+
   <?php if($this->session->flashdata('post_updated')) : ?>
   <div class="alert alert-success">
     <?= $this->session->flashdata('post_updated') ?>
   </div>
   <?php endif; ?>
+
   <?php if($this->session->flashdata('new_comment')) : ?>
   <div class="alert alert-success">
     <?= $this->session->flashdata('new_comment') ?>
   </div>
   <?php endif; ?>
+
   <?php if($this->session->flashdata('category_created')) : ?>
   <div class="alert alert-success">
     <?= $this->session->flashdata('category_created') ?>
   </div>
   <?php endif; ?>
+
+<?php if($this->session->flashdata('user_logged_in')) : ?>
+<div class="alert alert-success">
+  <?= $this->session->flashdata('user_logged_in') ?>
+</div>
+<?php endif; ?>
+
+<?php if($this->session->flashdata('login_failed')) : ?>
+<div class="alert alert-danger">
+  <?= $this->session->flashdata('login_failed') ?>
+</div>
+<?php endif; ?>
+
+<?php if($this->session->flashdata('user_logged_out')) : ?>
+<div class="alert alert-success">
+  <?= $this->session->flashdata('user_logged_out') ?>
+</div>
+<?php endif; ?>
+
