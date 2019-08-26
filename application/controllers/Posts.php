@@ -3,13 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Posts extends CI_Controller {
 
-    public function __construct()
-    {
-        parent::__construct();
-        $this->load->model('post_model');
-        $this->load->model('comments_model');
-    }
 
+    /**
+     * 
+     * Display all the blog post.
+     * Update the $config['per_page'] = 3; value to show more page per page
+     * 
+     */
 	public function index($offset = 0)
 	{
         // Pagination Config
@@ -31,6 +31,12 @@ class Posts extends CI_Controller {
 		$this->load->view('templates/footer');
     }
     
+    /**
+     * 
+     * Display single blog post.
+     * Display edit and delete button to specific login user who created the post.
+     * 
+     */
     public function view($slug = NULL) {
         $data['post'] = $this->post_model->get_posts($slug);
 

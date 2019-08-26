@@ -3,13 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Categories extends CI_Controller {
 
-    public function __construct()
-    {
-        parent::__construct();
-        $this->load->model('category_model');
-        $this->load->model('post_model');
-    }
-
     public function index() {
         $data['title'] = 'List of Categories';
 
@@ -44,6 +37,11 @@ class Categories extends CI_Controller {
         }
     }
 
+    /**
+     * 
+     * Display posts whithin specific category.
+     * 
+     */
     public function posts($id) {  
         
         $data['title'] = $this->category_model->get_category($id)->name;
